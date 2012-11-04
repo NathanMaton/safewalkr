@@ -2,6 +2,7 @@
 
 /* Controllers */
 
+
 function MyCtrl1($scope, $http, $route, $routeParams, $location) {
   var user_lat;
   var user_lon;
@@ -16,6 +17,14 @@ function MyCtrl1($scope, $http, $route, $routeParams, $location) {
   // Sorry! No web storage support..
   }
 
+  
+  var infowindow = new google.maps.InfoWindow();
+  console.log(infowindow);
+  //improved marker event closing (but it doesn't work as written below)
+  //google.maps.event.addListener(map, 'click', function() {
+    //infowindow.close();
+  //});
+  
   function geocode( address , cb)
   {
     //takes in an address and turns it into a geocoded position
@@ -27,13 +36,6 @@ function MyCtrl1($scope, $http, $route, $routeParams, $location) {
     });
   };
   window.geocode = geocode;
-  
-  var infowindow = new google.maps.InfoWindow();
-  console.log(infowindow);
-  //improved marker event closing (but it doesn't work as written below)
-  //google.maps.event.addListener(map, 'click', function() {
-    //infowindow.close();
-  //});
 
   function setMapAddressLatLon(position)
   {    
@@ -113,21 +115,27 @@ MyCtrl1.$inject = ['$scope', '$http', '$route', '$routeParams', '$location'];
 
 
 function MyCtrl2($scope, $http, $route, $routeParams, $location) {
-  var fromloc = geocode(document.getElementById('fromloc').value);
-  var toloc = geocode(document.getElementById('toloc').value);
-  var meettime = geocode(document.getElementById('time').value);
   
-  function postAddress(fromloc, toloc, meettime){
-    var post_data = {
-        'fromLoc' : fromloc,
-        'toLoc' : toLoc,
-        'meetingTime' : meettime,
-        'uid' : '2'
-      };
-    $.post('/requests/', post_data, function(data) {
-        console.log('inside success func');
-      });
-  };
+  
+  $scope.postRequest = function (){
+    var fromloc = document.getElementById('fromloc').value;
+    alert(fromloc);
+    var toloc = document.getElementById('toloc').value;
+    alert(toloc);
+    var meettime = document.getElementById('time').value;
+    var post_data = {};
+
+    if (fromloc && toloc && meettime){  
+      //post_data['fromLoc'] = fromLoc;
+        //'fromLoc' : fromloc,
+        //'toLoc' : toLoc,
+        //'meetingTime' : meettime,
+        //'uid' : '2'
+    };
+  }
+    //$.post('/requests/', post_data, function(data) {
+     //   console.log('inside success func');
+     // });
   //the object is FromLat, FromLon, ToLat, ToLon, MeetingTime, UserID
 };
 MyCtrl2.$inject = ['$scope', '$http', '$route', '$routeParams', '$location'];

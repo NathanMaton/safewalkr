@@ -41,6 +41,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(params[:request])
+    logger.debug "Post should be valid: #{@request.valid?}"
 
     respond_to do |format|
       if @request.save
