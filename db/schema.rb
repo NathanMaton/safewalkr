@@ -11,11 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103172334) do
+ActiveRecord::Schema.define(:version => 20121104142115) do
+
+  create_table "requests", :force => true do |t|
+    t.integer  "uid"
+    t.boolean  "open"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "responseIds"
+    t.string   "fromLoc"
+    t.string   "toLoc"
+    t.datetime "meetingTime"
+  end
 
   create_table "users", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "homeAddress"
+    t.integer  "uid"
   end
 
 end

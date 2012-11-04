@@ -1,4 +1,6 @@
 Dcweek::Application.routes.draw do
+  resources :requests
+
   resources :users
   root to: "users#index"
   # The priority is based upon order of creation:

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 /* Controllers */
 
@@ -29,7 +29,7 @@ function MyCtrl1($scope, $http, $route, $routeParams, $location) {
   window.geocode = geocode;
   
   var infowindow = new google.maps.InfoWindow();
-  console.log(infowindow)
+  console.log(infowindow);
   //improved marker event closing (but it doesn't work as written below)
   //google.maps.event.addListener(map, 'click', function() {
     //infowindow.close();
@@ -108,8 +108,7 @@ function MyCtrl1($scope, $http, $route, $routeParams, $location) {
   ];
 
   getLocation();
-}
-
+};
 MyCtrl1.$inject = ['$scope', '$http', '$route', '$routeParams', '$location'];
 
 
@@ -117,13 +116,9 @@ function MyCtrl2($scope, $http, $route, $routeParams, $location) {
   var fromloc = geocode(document.getElementById('fromloc').value);
   var toloc = geocode(document.getElementById('toloc').value);
   var meettime = geocode(document.getElementById('time').value);
-  if (fromloc && toloc && meettime){
-
-  }
-  else{
-
-  }
+  
+  function postAddress(fromloc, toloc, meettime){
+  };
   //the object is FromLat, FromLon, ToLat, ToLon, MeetingTime, UserID
-
 };
 MyCtrl2.$inject = ['$scope', '$http', '$route', '$routeParams', '$location'];
