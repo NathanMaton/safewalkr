@@ -14,6 +14,6 @@
 #
 
 class Request < ActiveRecord::Base
-  attr_accessible :open, :uid, :responseIds
+  attr_accessible :open, :uid, :responseIds, :fromLoc, :toLoc, :meetingTime
   serialize :responseIds
 end

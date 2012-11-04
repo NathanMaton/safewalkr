@@ -118,6 +118,15 @@ function MyCtrl2($scope, $http, $route, $routeParams, $location) {
   var meettime = geocode(document.getElementById('time').value);
   
   function postAddress(fromloc, toloc, meettime){
+    var post_data = {
+        'fromLoc' : fromloc,
+        'toLoc' : toLoc,
+        'meetingTime' : meettime,
+        'uid' : '2'
+      };
+    $.post('/requests/', post_data, function(data) {
+        console.log('inside success func');
+      });
   };
   //the object is FromLat, FromLon, ToLat, ToLon, MeetingTime, UserID
 };
