@@ -119,23 +119,24 @@ function MyCtrl2($scope, $http, $route, $routeParams, $location) {
   
   $scope.postRequest = function (){
     var fromloc = document.getElementById('fromloc').value;
-    alert(fromloc);
     var toloc = document.getElementById('toloc').value;
-    alert(toloc);
     var meettime = document.getElementById('time').value;
     var post_data = {};
 
     if (fromloc && toloc && meettime){  
-      //post_data['fromLoc'] = fromLoc;
-        //'fromLoc' : fromloc,
-        //'toLoc' : toLoc,
-        //'meetingTime' : meettime,
-        //'uid' : '2'
-    };
+        post_data['FromLoc'] = fromloc;
+        post_data['ToLoc'] = fromloc;
+        post_data['MeetingTime'] = fromloc;
+        post_data['UserID'] = 'Admin';
+    }
+    else{
+      alert('please fill out all fields');
+    }
   }
-    //$.post('/requests/', post_data, function(data) {
-     //   console.log('inside success func');
-     // });
-  //the object is FromLat, FromLon, ToLat, ToLon, MeetingTime, UserID
+    $.post('/requests', post_data, function(data) {
+        console.log('inside success func');
+        window.location = '#/respond/admin';
+      });
+  //the object is FromLoc, ToLoc, MeetingTime, UserID
 };
 MyCtrl2.$inject = ['$scope', '$http', '$route', '$routeParams', '$location'];
